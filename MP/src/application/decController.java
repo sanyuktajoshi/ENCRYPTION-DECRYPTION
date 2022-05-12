@@ -58,7 +58,17 @@ public class decController {
 		else {
 			file.setText(null);
 		}
-	}
+		String fileName =selectedFile.getPath();
+		String ext=fileName.substring(fileName.length()-3);
+		System.out.print("ext:"+ext);
+		System.out.println("\nExtension:"+ext+"\n");
+		String extension = ext.toString();
+		if(!"png".equalsIgnoreCase(extension)&&!"jpg".equalsIgnoreCase(extension)) {
+			System.out.println("Running");
+			passwordField.setDisable(true);
+		}
+		}
+	
 
 		/*public void comboAlgo(ActionEvent event) throws Exception{
 			selectedAlgo.setText("You chose: "+algolist.getValue());
@@ -78,7 +88,22 @@ public class decController {
 			String fileName =selectedFile.getPath();
 			String message = passwordField.getText();
 			System.out.print(message);
-			endec.decryptImage.Decrypt(fileName, message);
+			String ext=fileName.substring(fileName.length()-3);
+			System.out.print("ext:"+ext);
+			System.out.println("\nExtension:"+ext+"\n");
+			/*if(ext=="enc") {
+				
+			}*/
+			String extension = ext.toString();
+			if(!"png".equalsIgnoreCase(extension)&&!"jpg".equalsIgnoreCase(extension)) {
+			endec.decryptFile de = endec.decryptFile.getDecrypter(true);
+			de.decrypt(fileName, "C://Users//Sanyukta//OneDrive - somaiya.edu//SEMESTER - 4/MP/decrypted");
+			System.out.println("Decrypted!");
+			}
+			else {
+				System.out.println("Running");
+				endec.decryptImage.Decrypt(fileName, message);
+			}
 			
 		}
 }

@@ -26,6 +26,10 @@ public class decryptImage{
         int height = img.getHeight();
         int nrgb,rgb,b,r,g, key_temp, k = 0, i = 0, j = 0;
         
+        BufferedImage img2 = new BufferedImage(
+                img.getWidth(), img.getHeight(),
+                BufferedImage.TYPE_INT_RGB);
+        
         int arr[][] = new int[((width*height)/2) + 1][];
 
         System.out.print(width + " " + height);
@@ -88,7 +92,7 @@ public class decryptImage{
                     }
                     
                     nrgb  = 65536 * r + 256 * g + b ;
-                    img.setRGB(column, row, nrgb);
+                    img2.setRGB(column, row, nrgb);
                     
                     
                 }
@@ -101,7 +105,7 @@ public class decryptImage{
         }
         System.out.print("\n"+key+"\n");  
         
-        WriteImage(img, "DECAGAIN.jpg");
+        WriteImage(img2, "C://Users//Sanyukta//OneDrive - somaiya.edu//SEMESTER - 4//MP//decrypted//decbro.png");
         
     }    
         
@@ -110,7 +114,7 @@ public class decryptImage{
         File ImageFile = new File(path);
 
         try{
-            ImageIO.write(img,"jpg", ImageFile);
+            ImageIO.write(img,"png", ImageFile);
         }
         catch(IOException e){
             e.printStackTrace();

@@ -19,13 +19,15 @@ public class encryptImage{
 		
 		File tempFile = new File(filepath);
 		BufferedImage img = ImageIO.read(tempFile);
-		
-		
-
     	
         int width = img.getWidth();
         int height = img.getHeight();
         int nrgb, rgb, b, r, g, key_temp, k = 0, i = 0, j = 0;
+        
+        //changes
+        BufferedImage img2 = new BufferedImage(
+                img.getWidth(), img.getHeight(),
+                BufferedImage.TYPE_INT_RGB);
 
         System.out.print(width + " " + height);
 
@@ -85,7 +87,7 @@ public class encryptImage{
                     
 
                     nrgb  = 65536 * r + 256 * g + b ;
-                    img.setRGB(column, row, nrgb);
+                    img2.setRGB(column, row, nrgb);
                     
                 }
             }
@@ -98,7 +100,7 @@ public class encryptImage{
             img.setRGB(arr[l][0], arr[l][1], arr[j-l-1][2]);
         }   
         
-        WriteImage(img, "ENCAGAIN.jpg");
+        WriteImage(img2, "C:\\Users\\Sanyukta\\OneDrive - somaiya.edu\\SEMESTER - 4\\MP\\encrypted\\e.png");
     }
 	
   
@@ -107,7 +109,7 @@ public class encryptImage{
         File ImageFile = new File(path);
 
         try{
-            ImageIO.write(img,"jpg", ImageFile);
+            ImageIO.write(img,"png", ImageFile);
         }
         catch(IOException e){
             e.printStackTrace();
